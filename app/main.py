@@ -6,13 +6,15 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from dotenv import load_dotenv
 
+from version import __version__ as version
+
 
 load_dotenv()
 
 app = FastAPI(
     title="SaaS Agency",
     description="SaaS para agências de viagem nacionais e internacionais",
-    version="0.1.0",
+    version=version,
 )
 
 app.add_middleware(
