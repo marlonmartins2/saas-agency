@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 
 from version import __version__ as version
 
+from routers.agency import router as agency_router
 
 load_dotenv()
 
@@ -24,6 +25,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(agency_router)
 
 @app.get("/health-check")
 def health_check():

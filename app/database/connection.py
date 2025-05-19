@@ -17,7 +17,7 @@ class Index(type):
         super().__init__(*args, **kwargs)
 
 class BaseConnection:
-    client = MongoClient(
+    connection = MongoClient(
         settings.MONGO_URL,
         tlsAllowInvalidCertificates=True,
         retryWrites=False,
@@ -28,3 +28,5 @@ class BaseConnection:
 
 class BaseDB(BaseConnection, metaclass=Index):
     database = settings.DATABASE_ENVIRONMENT
+
+database = BaseDB.connection[BaseDB.database]
